@@ -18,11 +18,13 @@
   
 ## Short reads vs Long reads 
 ![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/7c3d08aca9cc4d45f6adc4a1d2b6e10563dcc77d/short-long-read.png)
+
 Short-read sequencing generates reads ranging from 50 to 350 bp in length, which might result in sequence gaps and insufficient coverage of disease-causing gene regions. Long-read sequencing generates reads that are tens of kilobases long, allowing for high-quality mapping throughout a genome and extensive variant identification.
 Sources: https://www.pacb.com/blog/understanding-rare-diseases-why-research-matters/
 
 ## Types of sequence variants found in a human genome
 ![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/359826aa884b98944cd0ee96885300bc9a4fc31d/variants.png)
+
 Variants range in size from 1 bp (single nucleotide variant), to >50 bp for larger structural variants such as deletions, insertions, duplications, inversions translocations, and copy number variants.
 Sources: https://www.pacb.com/human-genetics-research/review-how-long-read-sequencing-is-revealing-unseen-genomic-variation/
 
@@ -180,10 +182,10 @@ samtools index raw_data/subset.sorted.cancer.chr5.bam
 delly call -q 20 -x reference/human.hg38.excl.tsv -g reference/hg38.chr5.fa.gz -o output/sv_somatic.bcf raw_data/subset.sorted.cancer.chr5.bam raw_data/subset.sorted.normal.chr5.bam
 ```
 Explanation:
-- `q 20` : only reads with a mapping quality of at least 20 will be considered for variant calling.
-- `g fasta`: the reference genome file
-- `x reference.excl`: indicates the exclusion file containing genomic regions to be excluded from analysis, such as repetitive or problematic regions.
-- `o sv.bcf`: output BCF/VCF file
+- `-q 20` : only reads with a mapping quality of at least 20 will be considered for variant calling.
+- `-g fasta`: the reference genome file
+- `-x reference.excl`: indicates the exclusion file containing genomic regions to be excluded from analysis, such as repetitive or problematic regions.
+- `-o sv.bcf`: output BCF/VCF file
 - `tumor.bam` 
 - `control.bam`
 
@@ -251,13 +253,13 @@ samplot plot \
     -t DEL
 ```
 Explanation 
-- `n`: The names to be shown for each sample in the plot
-- `b`: The BAM/CRAM files of the samples (space-delimited)
-- `o`: The name of the output file containing the plot
-- `c`: The chromosome of the region of interest
-- `s`: The start location of the region of interest
-- `e`: The end location of the region of interest
-- `t`: The type of the variant of interest
+- `-n`: The names to be shown for each sample in the plot
+- `-b`: The BAM/CRAM files of the samples (space-delimited)
+- `-o`: The name of the output file containing the plot
+- `-c`: The chromosome of the region of interest
+- `-s`: The start location of the region of interest
+- `-e`: The end location of the region of interest
+- `-t`: The type of the variant of interest
 
 ### **6. Annotation**
 SnpEff is a toolset for genetic variation annotation and functional impact prediction. It annotates and predicts the impact of genetic variations (such as amino acid alterations) on genes and proteins. https://pcingola.github.io/SnpEff/
