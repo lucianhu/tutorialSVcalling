@@ -4,6 +4,7 @@
 ## Table of contents
 - [Calling Structural Variant (SV) and Clinical Application](#variant-annotation---gatk4-funcotator)
   - [Table of contents](#table-of-contents)
+  - [Tools](#tools)
   - [SV process](#sv-process)
     - [1. Directory/Data preparation](#1-directorydata-preparation)
     - [2. Upstream analysis](#2-upstream-dna-analysis)
@@ -12,7 +13,12 @@
     - [5. Visual inspection of SVs](#5-visual-inspection-of-svs)
     - [6. Annotation](#6-annotation)
   - [References](#reference)
+## 
+![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/main/long-short-read-2.png)
+Short-read sequencing generates reads ranging from 50 to 350 bp in length, which might result in sequence gaps and insufficient coverage of disease-causing gene regions. Long-read sequencing generates reads that are tens of kilobases long, allowing for high-quality mapping throughout a genome and extensive variant identification.
 
+![
+Variants range in size from 1 bp (single nucleotide variant), to >50 bp for larger structural variants such as deletions, insertions, duplications, inversions translocations, and copy number variants
 ## Tools
 - Minimap2 to map short read (>100bp) and long reads (PacBio and Nanopore)
 - GATK to pre-process data
