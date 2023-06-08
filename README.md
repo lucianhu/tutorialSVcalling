@@ -17,8 +17,9 @@
 ![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/main/long-short-read-2.png)
 Short-read sequencing generates reads ranging from 50 to 350 bp in length, which might result in sequence gaps and insufficient coverage of disease-causing gene regions. Long-read sequencing generates reads that are tens of kilobases long, allowing for high-quality mapping throughout a genome and extensive variant identification.
 
-![
-Variants range in size from 1 bp (single nucleotide variant), to >50 bp for larger structural variants such as deletions, insertions, duplications, inversions translocations, and copy number variants
+![img]()
+Variants range in size from 1 bp (single nucleotide variant), to >50 bp for larger structural variants such as deletions, insertions, duplications, inversions translocations, and copy number variants.
+
 ## Tools
 - Minimap2 to map short read (>100bp) and long reads (PacBio and Nanopore)
 - GATK to pre-process data
