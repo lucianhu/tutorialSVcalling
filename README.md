@@ -22,8 +22,9 @@ Short-read sequencing generates reads ranging from 50 to 350 bp in length, which
 Sources: https://www.pacb.com/blog/understanding-rare-diseases-why-research-matters/
 
 ## Types of sequence variants found in a human genome
-![img]()
+![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/359826aa884b98944cd0ee96885300bc9a4fc31d/variants.png)
 Variants range in size from 1 bp (single nucleotide variant), to >50 bp for larger structural variants such as deletions, insertions, duplications, inversions translocations, and copy number variants.
+Sources: https://www.pacb.com/human-genetics-research/review-how-long-read-sequencing-is-revealing-unseen-genomic-variation/
 
 ## Tools
 - Minimap2 to map short read (>100bp) and long reads (PacBio and Nanopore)
