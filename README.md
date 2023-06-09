@@ -272,7 +272,9 @@ Explanation
 - `-e`: End location of the region of interest
 - `-t`: Type of the variant of interest
 
-Figure 4: 
+Figure 4: Visualization of SVs of 3 samples in chromosome 5 (positions: 33800000 - 34800000).
+![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/8cc00539d1809aa25287f653f5591cca6e74ca8e/region.chromosome5.png)
+
 ### **6. Annotation**
 SnpEff is a toolset for genetic variation annotation and functional impact prediction. It annotates and predicts the impact of genetic variations (such as amino acid alterations) on genes and proteins. https://pcingola.github.io/SnpEff/
 
