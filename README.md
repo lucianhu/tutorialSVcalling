@@ -300,12 +300,15 @@ java -jar $HOME/DNA_softwares/snpEff/SnpSift.jar annotate $HOME/DNA_softwares/sn
 gatk VariantsToTable -V output/sv_somatic.clinvar.ann.vcf -F CHROM -F POS -F TYPE -F ID -F ALLELEID -F CLNDN -F CLNSIG -F CLNSIGCONF -F CLNSIGINCL -F CLNVC -F GENEINFO -GF AD -GF GQ -GF GT -O output/sv_somatic.clinvar.ann.csv
 ```
 ## **Appendix**
-Table 1: The total number of best alignments (primary alignments) in 3 reference genomes
+Table 1: Alignments outputs in 3 reference genomes
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
 | :----: | :----: | :----: | :----: |
 | normal | | 237335190 / 237383272 | 237335190 / 237399727
 | cancer | 207705616 / 209069025 | 207705616 / 208333438 | 207705616 / 208363972
 | SRR22508184.HG005.PacBio | 4321472 / 7562939 | 4321472 / 7570452 | 4321472 / 7565257
+Note: * / **.
+* : The number of primary alignments, which are the best alignments for each read, based on alignment score and mapping quality.
+** : The total number of reads in the file (only QC-passed).
 
 Table 2: Short-reads outputs for Somatic SV calling in 3 reference genomes 
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
