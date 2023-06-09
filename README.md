@@ -68,9 +68,9 @@ Bioproject: PRJEB2793
 
 Design: Whole Genome Sequencing of human
 
-Submitted by: Genomic Medicine Institute, Medical Research Center, Seoul National University, Seoul, Korea.
+Submitted by: Genomic Medicine Institute, Medical Research Center, Seoul National University, Seoul, Korea
 
-Study Title: Whole genome sequencing of a lung adenocarcinoma patient AK55
+Study: Whole genome sequencing of a lung adenocarcinoma patient AK55.
 
 Instrument: ILLUMINA (Illumina HiSeq 2000)
 
@@ -100,7 +100,7 @@ Design: RNA sequencing of Homo sapiens B-Lymphocyte sample NIST HG005 NA24631
 
 Submitted by: Baylor College of Medicine (BCM)
 
-Study: A public-private-academic consortium, Genome-in-a-Bottle (GIAB), hosted by NIST to develop reference materials and standards for clinical sequencing
+Study: A public-private-academic consortium, Genome-in-a-Bottle (GIAB), hosted by NIST to develop reference materials and standards for clinical sequencing.
 
 Instrument: PACBIO_SMRT (Sequel II) 
 
