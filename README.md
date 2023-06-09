@@ -300,7 +300,14 @@ java -jar $HOME/DNA_softwares/snpEff/SnpSift.jar annotate $HOME/DNA_softwares/sn
 gatk VariantsToTable -V output/sv_somatic.clinvar.ann.vcf -F CHROM -F POS -F TYPE -F ID -F ALLELEID -F CLNDN -F CLNSIG -F CLNSIGCONF -F CLNSIGINCL -F CLNVC -F GENEINFO -GF AD -GF GQ -GF GT -O output/sv_somatic.clinvar.ann.csv
 ```
 ## **Appendix**
-Table 2: Short reads
+Table 1: The total number of best alignments (primary alignments) in 3 reference genomes
+| | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
+| :----: | :----: | :----: | :----: |
+| normal | | 237335190 / 237383272 | 237335190 / 237399727
+| cancer | 207705616 / 209069025 | 207705616 / 208333438 | 207705616 / 208363972
+| SRR22508184.HG005.PacBio | 4321472 / 7562939 | 
+
+Table 2: Short-reads outputs for Somatic SV calling in 3 reference genomes 
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
 | :----: | :----: | :----: | :----: |
 | number of SVs | | 17552 | 17699 |
@@ -310,7 +317,7 @@ Table 2: Short reads
 | Translocation | | 11107 | 11173 |
 | Insertion | | 75 | 75 |
 
-Table 3: Long reads
+Table 3:  Long-reads outputs for SV calling in 3 reference genomes 
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
 | :----: | :----: | :----: | :----: |
 | number of SVs | 23409 |||
