@@ -253,8 +253,8 @@ samplot plot \
 -r reference/hg38.fa.gz
 -o output/region.png \
 -c chr5 \
--s 34287816 \
--e 34288320 \
+-s 33800000 \
+-e 34800000 \
 -t DEL
 ```
 Explanation 
@@ -299,7 +299,15 @@ java -jar $HOME/DNA_softwares/snpEff/SnpSift.jar annotate $HOME/DNA_softwares/sn
 
 gatk VariantsToTable -V output/sv_somatic.clinvar.ann.vcf -F CHROM -F POS -F TYPE -F ID -F ALLELEID -F CLNDN -F CLNSIG -F CLNSIGCONF -F CLNSIGINCL -F CLNVC -F GENEINFO -GF AD -GF GQ -GF GT -O output/sv_somatic.clinvar.ann.csv
 ```
-
+## **Appendix
+| | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
+| :----: | :----: | :----: | :----: |
+| number of SVs | | 17552 | 17699 |
+| Deletion | | 4914 | 4984 |
+| Duplication | | 428 | 441 |
+| Inversion | | 1028 | 1026 |
+| Translocation | | 11107 | 11173 |
+| Insertion | | 75 | 75 |
 ## **Reference**
 
 Belyeu, J.R., Chowdhury, M., Brown, J. et al. Samplot: a platform for structural variant visual validation and automated filtering. Genome Biol 22, 161 (2021). https://doi.org/10.1186/s13059-021-02380-5. 
