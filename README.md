@@ -305,7 +305,7 @@ Table 1: The total number of best alignments (primary alignments) in 3 reference
 | :----: | :----: | :----: | :----: |
 | normal | | 237335190 / 237383272 | 237335190 / 237399727
 | cancer | 207705616 / 209069025 | 207705616 / 208333438 | 207705616 / 208363972
-| SRR22508184.HG005.PacBio | 4321472 / 7562939 | 4321472 / 7570452 | 
+| SRR22508184.HG005.PacBio | 4321472 / 7562939 | 4321472 / 7570452 | 4321472 / 7565257
 
 Table 2: Short-reads outputs for Somatic SV calling in 3 reference genomes 
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
