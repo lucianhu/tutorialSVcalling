@@ -18,16 +18,20 @@
   - [References](#reference)
   
 ## Short reads vs Long reads 
+Figure 1: Technologies that provide better variant detection deliver more explanations in rare disease research (PacBio 2023).
+![img] 
+
+Figure 2: Short-reads and Long-reads technology (Blood 2023).
 ![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/7c3d08aca9cc4d45f6adc4a1d2b6e10563dcc77d/short-long-read.png)
 
 Short-read sequencing generates reads ranging from 50 to 350 bp in length, which might result in sequence gaps and insufficient coverage of disease-causing gene regions. Long-read sequencing generates reads that are tens of kilobases long, allowing for high-quality mapping throughout a genome and extensive variant identification.
 Sources: https://www.pacb.com/blog/understanding-rare-diseases-why-research-matters/
 
 ## Types of sequence variants found in a human genome
+Figure 3: Variation between two human genomes, by number of base pairs impacted (PacBio 2020).
 ![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/359826aa884b98944cd0ee96885300bc9a4fc31d/variants.png)
 
 Variants range in size from 1 bp (single nucleotide variant), to >50 bp for larger structural variants such as deletions, insertions, duplications, inversions translocations, and copy number variants.
-Sources: https://www.pacb.com/human-genetics-research/review-how-long-read-sequencing-is-revealing-unseen-genomic-variation/
 
 ## Tools
 - Minimap2 to map short read (>100bp) and long reads (PacBio and Nanopore)
@@ -39,6 +43,7 @@ Sources: https://www.pacb.com/human-genetics-research/review-how-long-read-seque
 - SnpEff to annotate SVs
 
 ## SV process
+Figuire 3: SV process
 ```mermaid
 flowchart TD
     subgraph "SV CALLING"
@@ -268,6 +273,7 @@ Explanation
 - `-e`: End location of the region of interest
 - `-t`: Type of the variant of interest
 
+Figure 4: 
 ### **6. Annotation**
 SnpEff is a toolset for genetic variation annotation and functional impact prediction. It annotates and predicts the impact of genetic variations (such as amino acid alterations) on genes and proteins. https://pcingola.github.io/SnpEff/
 
@@ -300,6 +306,9 @@ java -jar $HOME/DNA_softwares/snpEff/SnpSift.jar annotate $HOME/DNA_softwares/sn
 
 gatk VariantsToTable -V output/sv_somatic.clinvar.ann.vcf -F CHROM -F POS -F TYPE -F ID -F ALLELEID -F CLNDN -F CLNSIG -F CLNSIGCONF -F CLNSIGINCL -F CLNVC -F GENEINFO -GF AD -GF GQ -GF GT -O output/sv_somatic.clinvar.ann.csv
 ```
+Figure 5: An example of a somatic SV calling's output Clinvar annotation.
+![img]
+
 ## **Appendix**
 Table 1: Alignments outputs in 3 reference genomes
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
@@ -337,16 +346,25 @@ Table 3:  Long-reads outputs for SV calling in 3 reference genomes
 | Inversion | 103 | 99 | 99 |
 | Translocation | 1165 | 1170 | 1171 |
 | Insertion | 524 | 497 | 497 |
+
 ## **Reference**
 
-Belyeu, J.R., Chowdhury, M., Brown, J. et al. Samplot: a platform for structural variant visual validation and automated filtering. Genome Biol 22, 161 (2021). https://doi.org/10.1186/s13059-021-02380-5. 
+Belyeu, J. R., Chowdhury, M., Brown, J., Pedersen, B. S., Cormier, M. J., Quinlan, A. R., & Layer, R. M. (2021). Samplot: a platform for structural variant visual validation and automated filtering. *Genome biology, 22(1)*, 1-13. https://doi.org/10.1186/s13059-021-02380-5.
 
-Cingolani, P., Patel, V. M., Coon, M., Nguyen, T., Land, S. J., Ruden, D. M., & Lu, X. (2012). Using Drosophila melanogaster as a model for genotoxic chemical mutational studies with a new program, SnpSift. Frontiers in genetics, 3, 35. https://doi.org/10.3389%2Ffgene.2012.00035
+Blood, M. (2023). Understanding rare diseases: Why research matters. *Rare disease*. [online] PacBio. Available at https://www.pacb.com/blog/understanding-rare-diseases-why-research-matters/. [Accessed 9 Jun. 2023].
 
-Danecek, P., Bonfield, J. K., Liddle, J., Marshall, J., Ohan, V., Pollard, M. O., ... & Li, H. (2021). Twelve years of SAMtools and BCFtools. Gigascience, 10(2), giab008. https://doi.org/10.1093/gigascience/giab008.
+Cingolani, P., Patel, V. M., Coon, M., Nguyen, T., Land, S. J., Ruden, D. M., & Lu, X. (2012). Using Drosophila melanogaster as a model for genotoxic chemical mutational studies with a new program, SnpSift. *Frontiers in genetics, 3*, 35. https://doi.org/10.3389%2Ffgene.2012.00035.
 
-Li, H. (2018). Minimap2: pairwise alignment for nucleotide sequences. Bioinformatics, 34(18), 3094-3100. https://doi.org/10.1093/bioinformatics/bty191.
+Danecek, P., Bonfield, J. K., Liddle, J., Marshall, J., Ohan, V., Pollard, M. O., ... & Li, H. (2021). Twelve years of SAMtools and BCFtools. *Gigascience, 10(2)*, giab008. https://doi.org/10.1093/gigascience/giab008.
+
+Li, H. (2018). Minimap2: pairwise alignment for nucleotide sequences. *Bioinformatics, 34(18)*, 3094-3100. https://doi.org/10.1093/bioinformatics/bty191.
+
+PacBio. (2020). Review: How long-read sequencing is revealing unseen genomic variation. *Human Genetics Research*. [online] PacBio. Available at https://www.pacb.com/human-genetics-research/review-how-long-read-sequencing-is-revealing-unseen-genomic-variation/. [Accessed 9 Jun. 2023].
+
+PacBio. (2021). Sequencing 101: Whole genome sequencing for rare diseases. *Sequencing 101*. [online] PacBio. Available at https://www.pacb.com/blog/sequencing-101-rare-diseases/. [Accessed 9 Jun. 2023].
 
 Rausch, T., Zichner, T., Schlattl, A., Stütz, A. M., Benes, V., & Korbel, J. O. (2012). DELLY: structural variant discovery by integrated paired-end and split-read analysis. Bioinformatics, 28(18), i333-i339. https://doi.org/10.1093/bioinformatics/bts378.
 
 Van der Auwera, G. A., & O'Connor, B. D. (2020). Genomics in the cloud: using Docker, GATK, and WDL in Terra. O'Reilly Media.
+
+
