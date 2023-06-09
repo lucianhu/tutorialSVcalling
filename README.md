@@ -19,13 +19,12 @@
   
 ## Short reads vs Long reads 
 Figure 1: Technologies that provide better variant detection deliver more explanations in rare disease research (PacBio 2023).
-![img] 
+![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/7b242267a11b32d0f3d13c041fa38d976cae3863/technology.png)
 
 Figure 2: Short-reads and Long-reads technology (Blood 2023).
 ![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/7c3d08aca9cc4d45f6adc4a1d2b6e10563dcc77d/short-long-read.png)
 
 Short-read sequencing generates reads ranging from 50 to 350 bp in length, which might result in sequence gaps and insufficient coverage of disease-causing gene regions. Long-read sequencing generates reads that are tens of kilobases long, allowing for high-quality mapping throughout a genome and extensive variant identification.
-Sources: https://www.pacb.com/blog/understanding-rare-diseases-why-research-matters/
 
 ## Types of sequence variants found in a human genome
 Figure 3: Variation between two human genomes, by number of base pairs impacted (PacBio 2020).
