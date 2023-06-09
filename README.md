@@ -328,19 +328,19 @@ Normal and cancer samples were mapped throughout the whole reference genome, not
 Table 2: Short-reads outputs for Somatic SV calling in 3 reference genomes 
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
 | :----: | :----: | :----: | :----: |
-| number of SVs | | 17552 | 17699 |
-| Deletion | | 4914 | 4984 |
-| Duplication | | 428 | 441 |
-| Inversion | | 1028 | 1026 |
-| Translocation | | 11107 | 11173 |
-| Insertion | | 75 | 75 |
+| Number of SVs | 19075 | 17552 | 17699 |
+| Deletion | 5879 | 4914 | 4984 |
+| Duplication | 635 | 428 | 441 |
+| Inversion | 1104 | 1028 | 1026 |
+| Translocation | 11368 | 11107 | 11173 |
+| Insertion | 89 | 75 | 75 |
 
 *Notes*: Normal and cancer samples were mapped throughout the whole reference genome, not only chromosome 5, as the guidelines below suggest. 
 
 Table 3:  Long-reads outputs for SV calling in 3 reference genomes 
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
 | :----: | :----: | :----: | :----: |
-| number of SVs | 23409 | 23333 | 23328 |
+| Number of SVs | 23409 | 23333 | 23328 |
 | Deletion | 20441 | 20390 | 20384 |
 | Duplication | 1176 | 1177 | 1177 |
 | Inversion | 103 | 99 | 99 |
