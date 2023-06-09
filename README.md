@@ -54,12 +54,34 @@ flowchart TD
 ```
 
 ### **1. Directory/Data preparation**
+
+#### 1.1 Setup working directory
+
 ```bash
 # Create output directory
 mkdir reference
 mkdir raw_data
 mkdir output
 ```
+#### 1.2 Raw data information for short-reads technology 
+Bioproject: PRJEB2793
+
+Design: Whole Genome Sequencing of human
+
+Submitted by: Genomic Medicine Institute, Medical Research Center, Seoul National University, Seoul, Korea.
+
+Study Title: Whole genome sequencing of a lung adenocarcinoma patient AK55
+
+Instrument: ILLUMINA (Illumina HiSeq 2000)
+
+Published: 19/12/2011
+
+Publications: Ju, Y. S., Lee, W. C., Shin, J. Y., Lee, S., Bleazard, T., Won, J. K., ... & Seo, J. S. (2012). A transforming KIF5B and RET gene fusion in lung adenocarcinoma revealed from 
+whole-genome and transcriptome sequencing. Genome research, 22(3), 436-445.
+
+Data access: https://www.ebi.ac.uk/ena/browser/view/PRJEB2793?show=publications
+
+Normal (ERR059355) and cancer (ERR063457) samples had their DNA data pre-processed (upstream DNA analysis) and mapped to chromosome 5 of whole GRCh38 reference genome. Please review prior CNV lectures to learn more about how it works.
 
 ```bash
 # Download raw data for BAM files of short reads
@@ -71,12 +93,31 @@ From: https://drive.google.com/uc?id=1taZrKPkRvsEZnpTunHFzELcQemLqJ04B
 To: subset.sorted.cancer.chr5.bam
 ```
 
+#### 1.3 Raw data information for long-reads technology
+BioProject: PRJNA200694
+
+Design: RNA sequencing of Homo sapiens B-Lymphocyte sample NIST HG005 NA24631
+
+Submitted by: Baylor College of Medicine (BCM)
+
+Study: A public-private-academic consortium, Genome-in-a-Bottle (GIAB), hosted by NIST to develop reference materials and standards for clinical sequencing
+
+Instrument: PACBIO_SMRT (Sequel II) 
+
+Published: 2/12/2022
+
+Data access: https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR22508184&display=download
+
+SRR22508184.HG005 was mapped to the whole GRCh38 reference genome, then duplicates were removed, and lastly the samples were converted to CRAM to reduce their size. 
+
 ```bash
 # Download raw data for CRAM files of long reads
 Downloading
 From: https://drive.google.com/file/d/11Ycnf1lrDxzwmTV0OmEbcEbomq9URV2R
 To: SRR22508184.HG005.PacBio.remove_dup.cram (1.51GB)
 ```
+
+#### 1.4 Reference genome 
 
 ```bash
 # Download reference file for Human genome GRCh38 
@@ -324,7 +365,7 @@ Table 1: Alignments outputs in 3 reference genomes
 
 ** : The total number of reads in the file (only QC-passed).
 
-Normal and cancer samples were mapped throughout the whole reference genome, not only chromosome 5, as the guidelines below suggest. 
+Normal and cancer samples were mapped throughout the whole reference genome, not only chromosome 5, as the guidelines above suggest. 
 
 Table 2: Short-reads outputs for Somatic SV calling in 3 reference genomes 
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
@@ -336,7 +377,7 @@ Table 2: Short-reads outputs for Somatic SV calling in 3 reference genomes
 | Translocation | 11368 | 11107 | 11173 |
 | Insertion | 89 | 75 | 75 |
 
-*Notes*: Normal and cancer samples were mapped throughout the whole reference genome, not only chromosome 5, as the guidelines below suggest. 
+*Notes*: Normal and cancer samples were mapped throughout the whole reference genome, not only chromosome 5, as the guidelines above suggest. 
 
 Table 3:  Long-reads outputs for SV calling in 3 reference genomes 
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
