@@ -14,6 +14,7 @@
     - [4. Querying VCF files](#4-querying-vcf-files)
     - [5. Visual inspection of SVs](#5-visual-inspection-of-svs)
     - [6. Annotation](#6-annotation)
+  - [Appendix](#appendix)
   - [References](#reference)
   
 ## Short reads vs Long reads 
@@ -303,12 +304,17 @@ gatk VariantsToTable -V output/sv_somatic.clinvar.ann.vcf -F CHROM -F POS -F TYP
 Table 1: Alignments outputs in 3 reference genomes
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
 | :----: | :----: | :----: | :----: |
-| normal | | 237335190 / 237383272 | 237335190 / 237399727
+| normal | 237335190 / 237937983 | 237335190 / 237383272 | 237335190 / 237399727
 | cancer | 207705616 / 209069025 | 207705616 / 208333438 | 207705616 / 208363972
 | SRR22508184.HG005.PacBio | 4321472 / 7562939 | 4321472 / 7570452 | 4321472 / 7565257
-Note: * / **.
-* : The number of primary alignments, which are the best alignments for each read, based on alignment score and mapping quality.
+
+*Notes*: * / ** means 
+
+\* : The number of primary alignments, which are the best alignments for each read, based on alignment score and mapping quality.
+
 ** : The total number of reads in the file (only QC-passed).
+
+Normal and cancer samples were mapped throughout the whole reference genome, not only chromosome 5, as the guidelines below suggest. 
 
 Table 2: Short-reads outputs for Somatic SV calling in 3 reference genomes 
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
@@ -319,6 +325,8 @@ Table 2: Short-reads outputs for Somatic SV calling in 3 reference genomes
 | Inversion | | 1028 | 1026 |
 | Translocation | | 11107 | 11173 |
 | Insertion | | 75 | 75 |
+
+*Notes*: Normal and cancer samples were mapped throughout the whole reference genome, not only chromosome 5, as the guidelines below suggest. 
 
 Table 3:  Long-reads outputs for SV calling in 3 reference genomes 
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
