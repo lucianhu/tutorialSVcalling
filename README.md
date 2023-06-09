@@ -255,7 +255,7 @@ samplot plot \
 -b raw_data/subset.sorted.normal.chr5.bam \
    raw_data/subset.sorted.cancer.chr5.bam\
    raw_data/SRR22508184.HG005.PacBio.remove_dup.cram \
--r reference/hg38.fa.gz
+-r reference/hg38.fa.gz \
 -o output/region.png \
 -c chr5 \
 -s 33800000 \
