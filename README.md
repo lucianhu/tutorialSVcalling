@@ -57,7 +57,7 @@ flowchart TD
     style C fill:#767076,stroke:#F9F2F4,stroke-width:2px,color:#fff
     end
 ```
-Figuire 4: The process of SV Calling
+Figuire 4: The process of SV Calling.
 
 ### **1. Directory/Data preparation**
 
