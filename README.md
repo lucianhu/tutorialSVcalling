@@ -104,7 +104,7 @@ Study: A public-private-academic consortium, Genome-in-a-Bottle (GIAB), hosted b
 
 Instrument: PACBIO_SMRT (Sequel II) 
 
-Published: 2/12/2022
+Published: 02/12/2022
 
 Data access: https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR22508184&display=download
 
