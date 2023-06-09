@@ -237,29 +237,35 @@ IGV is great for interactive browsing, but for huge numbers of SVs, command-line
 
 ```bash
 # Install Samplot
+conda create --name samplot # To avoid conflicts with existing packages, create a new Conda environment.
+
+conda activate samplot
+
 conda install -c bioconda samplot 
 ```
 
 ```bash
 samplot plot \
-    -n normal cancer HGOO5.PacBio \
-    -b raw_data/subset.sorted.normal.chr5.bam \
-       raw_data/subset.sorted.cancer.chr5.bam\
-       raw_data/SRR22508184.HG005.PacBio.remove_dup.cram \
-    -o region.png \
-    -c chr5 \
-    -s 34287816 \
-    -e 34288320 \
-    -t DEL
+-n normal cancer HGOO5.PacBio \
+-b raw_data/subset.sorted.normal.chr5.bam \
+   raw_data/subset.sorted.cancer.chr5.bam\
+   raw_data/SRR22508184.HG005.PacBio.remove_dup.cram \
+-r reference/hg38.fa.gz
+-o output/region.png \
+-c chr5 \
+-s 34287816 \
+-e 34288320 \
+-t DEL
 ```
 Explanation 
-- `-n`: The names to be shown for each sample in the plot
-- `-b`: The BAM/CRAM files of the samples (space-delimited)
+- `-n`: The name to be shown for each sample in the plot
+- `-b`: BAM/CRAM files of the samples (space-delimited)
+- `-r`: Reference fasta for CRAM (only CRAM files is required)
 - `-o`: The name of the output file containing the plot
-- `-c`: The chromosome of the region of interest
-- `-s`: The start location of the region of interest
-- `-e`: The end location of the region of interest
-- `-t`: The type of the variant of interest
+- `-c`: Chromosome of the region of interest
+- `-s`: Start location of the region of interest
+- `-e`: End location of the region of interest
+- `-t`: Type of the variant of interest
 
 ### **6. Annotation**
 SnpEff is a toolset for genetic variation annotation and functional impact prediction. It annotates and predicts the impact of genetic variations (such as amino acid alterations) on genes and proteins. https://pcingola.github.io/SnpEff/
