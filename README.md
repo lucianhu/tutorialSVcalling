@@ -87,7 +87,7 @@ whole-genome and transcriptome sequencing. Genome research, 22(3), 436-445.
 
 Data access: https://www.ebi.ac.uk/ena/browser/view/PRJEB2793?show=publications
 
-Normal (ERR059355) and cancer (ERR063457) samples had their DNA data pre-processed (upstream DNA analysis) and were mapped to chromosome 5 of whole GRCh38 reference genome. Please review prior CNV lectures to learn more about how it worked.
+Normal (ERR059355) and cancer (ERR063457) samples had their DNA data pre-processed (upstream DNA analysis) and were mapped to chromosome 5 of whole GRCh38 reference genome. Please review prior CNV lectures to learn more about how they worked.
 
 ```bash
 # Download raw data for BAM files of short reads
@@ -114,7 +114,7 @@ Published: 02/12/2022
 
 Data access: https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR22508184&display=download
 
-SRR22508184.HG005 was mapped to the whole GRCh38 reference genome, then duplicates were removed, and lastly the samples were converted to CRAM to reduce their size. 
+SRR22508184.HG005 was mapped to the whole GRCh38 reference genome, then duplicates were removed, and lastly the samples were converted to CRAM to reduce its size. 
 
 ```bash
 # Download raw data for CRAM files of long reads
@@ -362,12 +362,14 @@ gatk VariantsToTable -V output/sv_somatic.clinvar.ann.vcf -F CHROM -F POS -F TYP
 Figure 5: Clinvar annotation of SRR22508184.HG005.PacBio from long-reads SV calling with the whole GRCh38 reference genome.
 
 ## **Appendix**
-Table 1: Alignments outputs in 3 reference genomes
-| | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
-| :----: | :----: | :----: | :----: |
-| normal | 237335190 / 237937983 | 237335190 / 237383272 | 237335190 / 237399727
-| cancer | 207705616 / 209069025 | 207705616 / 208333438 | 207705616 / 208363972
-| SRR22508184.HG005.PacBio | 4321472 / 7562939 | 4321472 / 7570452 | 4321472 / 7565257
+The findings saved in this appendix part are purely for reference purposes and are not intended to be exercise solutions. Because the DNA strands utilized in these tables were uncut and connected to the complete genome. The samples used in the exercise have been sliced to minimize size and make it easy to operate the machine without the need for strong configuration.
+
+Table 1: Alignments outputs in GRCh38 reference genome.
+| | GRCh38 | 
+| :----: | :----: |
+| normal | 237335190 / 237937983 |
+| cancer | 207705616 / 209069025 | 
+| SRR22508184.HG005.PacBio | 4321472 / 7562939 | 
 
 *Notes*: * / ** means 
 
@@ -377,27 +379,27 @@ Table 1: Alignments outputs in 3 reference genomes
 
 Normal and cancer samples were mapped throughout the whole reference genome, not only chromosome 5, as the guidelines above suggest. 
 
-Table 2: Short-reads outputs for Somatic SV calling in 3 reference genomes 
-| | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
-| :----: | :----: | :----: | :----: |
-| Number of SVs | 19075 | 17552 | 17699 |
-| Deletion | 5879 | 4914 | 4984 |
-| Duplication | 635 | 428 | 441 |
-| Inversion | 1104 | 1028 | 1026 |
-| Translocation | 11368 | 11107 | 11173 |
-| Insertion | 89 | 75 | 75 |
+Table 2: Short-reads outputs for Somatic SV calling in GRCh38 reference genome. 
+| | GRCh38 | 
+| :----: | :----: |
+| Number of SVs | 19075 | 
+| Deletion | 5879 | 
+| Duplication | 635 | 
+| Inversion | 1104 | 
+| Translocation | 11368 | 
+| Insertion | 89 | 
 
 *Notes*: Normal and cancer samples were mapped throughout the whole reference genome, not only chromosome 5, as the guidelines above suggest. 
 
-Table 3:  Long-reads outputs for SV calling in 3 reference genomes 
-| | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
-| :----: | :----: | :----: | :----: |
-| Number of SVs | 23409 | 23333 | 23328 |
-| Deletion | 20441 | 20390 | 20384 |
-| Duplication | 1176 | 1177 | 1177 |
-| Inversion | 103 | 99 | 99 |
-| Translocation | 1165 | 1170 | 1171 |
-| Insertion | 524 | 497 | 497 |
+Table 3:  Long-reads outputs for SV calling in GRCh38 reference genomes.
+| | GRCh38 | 
+| :----: | :----: | 
+| Number of SVs | 23409 | 
+| Deletion | 20441 |
+| Duplication | 1176 | 
+| Inversion | 103 | 
+| Translocation | 1165 | 
+| Insertion | 524 | 
 
 ## **Reference**
 
