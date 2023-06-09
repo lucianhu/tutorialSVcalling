@@ -305,7 +305,7 @@ Table 1: The total number of best alignments (primary alignments) in 3 reference
 | :----: | :----: | :----: | :----: |
 | normal | | 237335190 / 237383272 | 237335190 / 237399727
 | cancer | 207705616 / 209069025 | 207705616 / 208333438 | 207705616 / 208363972
-| SRR22508184.HG005.PacBio | 4321472 / 7562939 | 
+| SRR22508184.HG005.PacBio | 4321472 / 7562939 | 4321472 / 7570452 | 
 
 Table 2: Short-reads outputs for Somatic SV calling in 3 reference genomes 
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
@@ -320,12 +320,12 @@ Table 2: Short-reads outputs for Somatic SV calling in 3 reference genomes
 Table 3:  Long-reads outputs for SV calling in 3 reference genomes 
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
 | :----: | :----: | :----: | :----: |
-| number of SVs | 23409 |||
-| Deletion | 20441 |4 |
-| Duplication | 1176 |
-| Inversion | 103 | 
-| Translocation | 1165 | 11173 |
-| Insertion | 524 | |
+| number of SVs | 23409 | 23333 | 23328 |
+| Deletion | 20441 | 20390 | 20384 |
+| Duplication | 1176 | 1177 | 1177 |
+| Inversion | 103 | 99 | 99 |
+| Translocation | 1165 | 1170 | 1171 |
+| Insertion | 524 | 497 | 497 |
 ## **Reference**
 
 Belyeu, J.R., Chowdhury, M., Brown, J. et al. Samplot: a platform for structural variant visual validation and automated filtering. Genome Biol 22, 161 (2021). https://doi.org/10.1186/s13059-021-02380-5. 
