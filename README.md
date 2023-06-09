@@ -299,7 +299,8 @@ java -jar $HOME/DNA_softwares/snpEff/SnpSift.jar annotate $HOME/DNA_softwares/sn
 
 gatk VariantsToTable -V output/sv_somatic.clinvar.ann.vcf -F CHROM -F POS -F TYPE -F ID -F ALLELEID -F CLNDN -F CLNSIG -F CLNSIGCONF -F CLNSIGINCL -F CLNVC -F GENEINFO -GF AD -GF GQ -GF GT -O output/sv_somatic.clinvar.ann.csv
 ```
-## **Appendix
+## **Appendix**
+Table 2: Short reads
 | | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
 | :----: | :----: | :----: | :----: |
 | number of SVs | | 17552 | 17699 |
@@ -308,6 +309,16 @@ gatk VariantsToTable -V output/sv_somatic.clinvar.ann.vcf -F CHROM -F POS -F TYP
 | Inversion | | 1028 | 1026 |
 | Translocation | | 11107 | 11173 |
 | Insertion | | 75 | 75 |
+
+Table 3: Long reads
+| | GRCh38 | T2T-CHM13 v2.0 | Minigraph Pangenome |
+| :----: | :----: | :----: | :----: |
+| number of SVs | 23409 |||
+| Deletion | 20441 |4 |
+| Duplication | 1176 |
+| Inversion | 103 | 
+| Translocation | 1165 | 11173 |
+| Insertion | 524 | |
 ## **Reference**
 
 Belyeu, J.R., Chowdhury, M., Brown, J. et al. Samplot: a platform for structural variant visual validation and automated filtering. Genome Biol 22, 161 (2021). https://doi.org/10.1186/s13059-021-02380-5. 
