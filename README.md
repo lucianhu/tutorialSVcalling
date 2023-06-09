@@ -18,17 +18,22 @@
   - [References](#reference)
   
 ## Short reads vs Long reads 
-Figure 1: Technologies that provide better variant detection deliver more explanations in rare disease research (PacBio 2023).
+
 ![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/7b242267a11b32d0f3d13c041fa38d976cae3863/technology.png)
 
-Figure 2: Short-reads and Long-reads technology (Blood 2023).
+Figure 1: Technologies that provide better variant detection deliver more explanations in rare disease research (PacBio 2023).
+
 ![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/7c3d08aca9cc4d45f6adc4a1d2b6e10563dcc77d/short-long-read.png)
+
+Figure 2: Short-reads and Long-reads technology (Blood 2023).
 
 Short-read sequencing generates reads ranging from 50 to 350 bp in length, which might result in sequence gaps and insufficient coverage of disease-causing gene regions. Long-read sequencing generates reads that are tens of kilobases long, allowing for high-quality mapping throughout a genome and extensive variant identification.
 
 ## Types of sequence variants found in a human genome
-Figure 3: Variation between two human genomes, by number of base pairs impacted (PacBio 2020).
+
 ![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/359826aa884b98944cd0ee96885300bc9a4fc31d/variants.png)
+
+Figure 3: Variation between two human genomes, by number of base pairs impacted (PacBio 2020).
 
 Variants range in size from 1 bp (single nucleotide variant), to >50 bp for larger structural variants such as deletions, insertions, duplications, inversions translocations, and copy number variants.
 
@@ -42,7 +47,7 @@ Variants range in size from 1 bp (single nucleotide variant), to >50 bp for larg
 - SnpEff to annotate SVs
 
 ## SV process
-Figuire 3: SV process
+
 ```mermaid
 flowchart TD
     subgraph "SV CALLING"
@@ -52,6 +57,7 @@ flowchart TD
     style C fill:#767076,stroke:#F9F2F4,stroke-width:2px,color:#fff
     end
 ```
+Figuire 4: SV process
 
 ### **1. Directory/Data preparation**
 
@@ -81,7 +87,7 @@ whole-genome and transcriptome sequencing. Genome research, 22(3), 436-445.
 
 Data access: https://www.ebi.ac.uk/ena/browser/view/PRJEB2793?show=publications
 
-Normal (ERR059355) and cancer (ERR063457) samples had their DNA data pre-processed (upstream DNA analysis) and mapped to chromosome 5 of whole GRCh38 reference genome. Please review prior CNV lectures to learn more about how it works.
+Normal (ERR059355) and cancer (ERR063457) samples had their DNA data pre-processed (upstream DNA analysis) and were mapped to chromosome 5 of whole GRCh38 reference genome. Please review prior CNV lectures to learn more about how it worked.
 
 ```bash
 # Download raw data for BAM files of short reads
@@ -136,7 +142,7 @@ samtools faidx reference/hg38.chr5.fa.gz
 ### **2. Upstream DNA analysis**
 Minimap2 is a powerful sequence alignment application that can compare DNA or mRNA sequences to a huge reference library. Typical use cases include: (1) mapping PacBio or Oxford Nanopore genomic reads to the human genome; (2) finding overlaps between long reads with error rate up to ~15%; (3) splice-aware alignment of PacBio Iso-Seq or Nanopore cDNA or Direct RNA reads against a reference genome; (4) aligning Illumina single- or paired-end reads; (5) assembly-to-assembly alignment; (6) full-genome alignment between two closely related species with divergence below ~15%.
 
-Minimap2 is 10x quicker than common long-read mappers such as BLASR, BWA-MEM, NGMLR, and GMAP for 10kb noisy read sequences. On simulated long reads, it is more accurate and generates physiologically relevant alignment suitable for downstream analysis. Minimap2 is 3x faster than BWA-MEM and Bowtie2 for >100bp Illumina short reads and twice (2x) as accurate on simulated data. The minimap2 article or the preprint include detailed evaluations.
+Minimap2 is 10x quicker than common long-read mappers such as BLASR, BWA-MEM, NGMLR, and GMAP for 10kb noisy read sequences. On simulated long reads, it is more accurate and generates physiologically relevant alignment suitable for downstream analysis. Minimap2 is 3x faster than BWA-MEM and Bowtie2 for >100bp Illumina short reads and twice (2x) as accurate on simulated data. The minimap2 articles or the preprint include detailed evaluations.
 
 ```bash
 # Install Minimap2
@@ -148,21 +154,21 @@ conda install -c bioconda minimap2
 ```
 #### Index reference genome before running minimap2
 ```bash
-./minimap2 -d reference/hg38.mmi reference/hg38.fa.gz
+minimap2 -d reference/hg38.mmi reference/hg38.fa.gz
 ```
 
 #### Map long reads
 ```bash
-./minimap2 -ax map-hifi --MD reference/hg38.mmi raw_data/SRR22508184.HG005.PacBio.trimmed.fastq.gz > raw_data/SRR22508184.HG005.PacBio.aln.sam
+minimap2 -ax map-hifi --MD reference/hg38.mmi raw_data/SRR22508184.HG005.PacBio.trimmed.fastq.gz > raw_data/SRR22508184.HG005.PacBio.aln.sam
 ```
 Explanation:
 ```bash
-./minimap2 -ax map-ont ref.mmi ont.fq.gz > aln.sam         # Oxford Nanopore genomic reads
-./minimap2 -ax map-hifi ref.mmi pacbio-ccs.fq.gz > aln.sam # PacBio HiFi/CCS genomic reads (v2.19 or later)
-./minimap2 -ax asm20 ref.mmi pacbio-ccs.fq.gz > aln.sam    # PacBio HiFi/CCS genomic reads (v2.18 or earlier)
-./minimap2 -ax sr ref.mmi read1.fa read2.fa > aln.sam      # short genomic paired-end reads
+minimap2 -ax map-ont ref.mmi ont.fq.gz > aln.sam         # Oxford Nanopore genomic reads
+minimap2 -ax map-hifi ref.mmi pacbio-ccs.fq.gz > aln.sam # PacBio HiFi/CCS genomic reads (v2.19 or later)
+minimap2 -ax asm20 ref.mmi pacbio-ccs.fq.gz > aln.sam    # PacBio HiFi/CCS genomic reads (v2.18 or earlier)
+minimap2 -ax sr ref.mmi read1.fa read2.fa > aln.sam      # short genomic paired-end reads
 # man page for detailed command line options
-man ./minimap2.1
+man minimap2.1
 ```
 
 #### Convert SAM to BAM
@@ -278,6 +284,7 @@ bcftools view -H output/sv_somatic.bcf | awk '{print $3}' | grep -o "^BND" | wc 
 
 bcftools view -H output/sv_somatic.bcf | awk '{print $3}' | grep -o "^INS" | wc -l 
 ```
+
 ### **5. Visual inspection of SVs**
 IGV is great for interactive browsing, but for huge numbers of SVs, command-line programs like Samplot can plot many SVs in batch. Samplot is a bioconda package that can be installed using the conda package management. https://github.com/ryanlayer/samplot
 
@@ -313,8 +320,9 @@ Explanation
 - `-e`: End location of the region of interest
 - `-t`: Type of the variant of interest
 
-Figure 4: Visualization of SVs of 3 samples in chromosome 5 (positions: 33800000 - 34800000).
 ![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/8cc00539d1809aa25287f653f5591cca6e74ca8e/region.chromosome5.png)
+
+Figure 5: Visualization of SVs of 3 samples in chromosome 5 (positions: 33800000 - 34800000).
 
 ### **6. Annotation**
 SnpEff is a toolset for genetic variation annotation and functional impact prediction. It annotates and predicts the impact of genetic variations (such as amino acid alterations) on genes and proteins. https://pcingola.github.io/SnpEff/
@@ -348,8 +356,10 @@ java -jar $HOME/DNA_softwares/snpEff/SnpSift.jar annotate $HOME/DNA_softwares/sn
 
 gatk VariantsToTable -V output/sv_somatic.clinvar.ann.vcf -F CHROM -F POS -F TYPE -F ID -F ALLELEID -F CLNDN -F CLNSIG -F CLNSIGCONF -F CLNSIGINCL -F CLNVC -F GENEINFO -GF AD -GF GQ -GF GT -O output/sv_somatic.clinvar.ann.csv
 ```
-Figure 5: Clinvar annotation of SRR22508184.HG005.PacBio from long-reads SV calling with the whole GRCh38 reference genome.
+
 ![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/6787a98a4c2049b05215e00d6cbe9fb594bab6a1/Clinvar-annotation.png)
+
+Figure 5: Clinvar annotation of SRR22508184.HG005.PacBio from long-reads SV calling with the whole GRCh38 reference genome.
 
 ## **Appendix**
 Table 1: Alignments outputs in 3 reference genomes
