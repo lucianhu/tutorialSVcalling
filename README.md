@@ -4,10 +4,10 @@
 ## Table of contents
 - [Calling Structural Variant (SV) and Clinical Application](#variant-annotation---gatk4-funcotator)
   - [Table of contents](#table-of-contents)
-  - [Short reads vs Long reads](#short-reads-vs-long-reads)
+  - [Short Reads vs Long Reads technology](#short-reads-vs-long-reads-technology)
   - [Types of sequence variants found in a human genome](#types-of-sequence-variants-found-in-a-human-genome)
   - [Tools](#tools)
-  - [SV process](#sv-process)
+  - [Structural Variation Pipeline](#structural-variation-pipeline)
     - [1. Directory/Data preparation](#1-directorydata-preparation)
     - [2. Upstream analysis](#2-upstream-dna-analysis)
     - [3. Structural variant calling ](#3-structural-variant-calling)
@@ -17,7 +17,7 @@
   - [Appendix](#appendix)
   - [References](#reference)
   
-## Short reads vs Long reads 
+## Short Reads vs Long Reads technology
 
 ![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/7b242267a11b32d0f3d13c041fa38d976cae3863/technology.png)
 
@@ -44,9 +44,9 @@ Variants range in size from 1 bp (single nucleotide variant), to >50 bp for larg
 - Delly to call SVs using short/long reads
 - Bcftools to manipulate VCF files with SV calls
 - Samplot to visualise and inspect SVs
-- SnpEff to annotate SVs
+- SnpSift to annotate SVs
 
-## SV process
+## Structural Variation Pipeline
 
 ```mermaid
 flowchart TD
@@ -57,7 +57,7 @@ flowchart TD
     style C fill:#767076,stroke:#F9F2F4,stroke-width:2px,color:#fff
     end
 ```
-Figuire 4: SV process
+Figuire 4: The process of SV Calling
 
 ### **1. Directory/Data preparation**
 
@@ -252,6 +252,11 @@ delly call -q 20 -x reference/human.hg38.excl.tsv -g reference/hg38.chr5.fa.gz -
 Filtering of called SV is also affected by the specific circumstance of the sample presented. We may use bcftools to filter the vcf files based on allele frequency, SV length, and SVs with the number of supporting reads to remove typically erroneous variations.
 
 ### **4. Querying VCF files**
+
+![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/abd77ec1a0e624f7f34b556cf1f3b271c1fe2052/SV-somatic-calling-chr5-output.png)
+
+Figure 5: An example of SV somatic calling results. 
+
 Bcftools offers many possibilities to query and reformat SV calls. For instance, to output a table with the chromosome, start, end, identifier and genotype of each SV we can use:
 ```bash
 bcftools query -f "%CHROM\t%POS\t%INFO/END\t%ID[\t%GT]\n" output/sv_somatic.bcf | head
@@ -322,13 +327,13 @@ Explanation
 
 ![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/8cc00539d1809aa25287f653f5591cca6e74ca8e/region.chromosome5.png)
 
-Figure 5: Visualization of SVs of 3 samples in chromosome 5 (positions: 33800000 - 34800000).
+Figure 6: Visualization of SVs of 3 samples (normal, cancer, SRR22508184.HG005.PacBio) in chromosome 5 (positions: 33800000 - 34800000).
 
 ### **6. Annotation**
-SnpEff is a toolset for genetic variation annotation and functional impact prediction. It annotates and predicts the impact of genetic variations (such as amino acid alterations) on genes and proteins. https://pcingola.github.io/SnpEff/
+SnpSift is a toolset for genetic variation annotation and functional impact prediction. It annotates and predicts the impact of genetic variations (such as amino acid alterations) on genes and proteins. https://pcingola.github.io/SnpEff/
 
 ```bash
-# Install SnpEff 
+# Install SnpSift 
 # Go to home dir
 cd
 
@@ -339,9 +344,9 @@ wget https://snpeff.blob.core.windows.net/versions/snpEff_latest_core.zip
 unzip snpEff_latest_core.zip
 
 # Download Clinvar databases
-wget https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz -O hg38.clinvar.vcf.gz
-gzip -d hg38.clinvar.vcf.gz
-bgzip hg38.clinvar.vcf && tabix -p vcf hg38.clinvar.vcf.gz
+wget https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz -O reference/hg38.clinvar.vcf.gz
+gzip -d reference/hg38.clinvar.vcf.gz
+bgzip reference/hg38.clinvar.vcf && tabix -p vcf reference/hg38.clinvar.vcf.gz
 ```
 
 ```bash
@@ -352,14 +357,14 @@ bcftools view output/sv_somatic.bcf > output/sv_somatic.vcf
  
 ```bash
 # Annotate with SnpSift and Clinvar
-java -jar $HOME/DNA_softwares/snpEff/SnpSift.jar annotate $HOME/DNA_softwares/snpEff/data/GRCh38.99/hg38.clinvar.vcf.gz output/sv_somatic.vcf > output/sv_somatic.clinvar.ann.vcf
+java -jar "path/to/snpEff/SnpSift.jar" annotate reference/hg38.clinvar.vcf.gz output/sv_somatic.vcf > output/sv_somatic.clinvar.ann.vcf
 
 gatk VariantsToTable -V output/sv_somatic.clinvar.ann.vcf -F CHROM -F POS -F TYPE -F ID -F ALLELEID -F CLNDN -F CLNSIG -F CLNSIGCONF -F CLNSIGINCL -F CLNVC -F GENEINFO -GF AD -GF GQ -GF GT -O output/sv_somatic.clinvar.ann.csv
 ```
 
 ![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/6787a98a4c2049b05215e00d6cbe9fb594bab6a1/Clinvar-annotation.png)
 
-Figure 5: Clinvar annotation of SRR22508184.HG005.PacBio from long-reads SV calling with the whole GRCh38 reference genome.
+Figure 7: Clinvar annotation of SRR22508184.HG005.PacBio from long-reads SV calling with the whole GRCh38 reference genome.
 
 ## **Appendix**
 The findings saved in this appendix part are purely for reference purposes and are not intended to be exercise solutions. Because the DNA strands utilized in these tables were uncut and connected to the complete genome. The samples used in the exercise have been sliced to minimize size and make it easy to operate the machine without the need for strong configuration.
