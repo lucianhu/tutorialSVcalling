@@ -307,8 +307,8 @@ java -jar $HOME/DNA_softwares/snpEff/SnpSift.jar annotate $HOME/DNA_softwares/sn
 
 gatk VariantsToTable -V output/sv_somatic.clinvar.ann.vcf -F CHROM -F POS -F TYPE -F ID -F ALLELEID -F CLNDN -F CLNSIG -F CLNSIGCONF -F CLNSIGINCL -F CLNVC -F GENEINFO -GF AD -GF GQ -GF GT -O output/sv_somatic.clinvar.ann.csv
 ```
-Figure 5: An example of a somatic SV calling's output Clinvar annotation.
-![img]
+Figure 5: Clinvar annotation of SRR22508184.HG005.PacBio from long-reads SV calling with the whole GRCh38 reference genome.
+![img](https://github.com/LuciaNhuNguyen/tutorialSVcalling/blob/6787a98a4c2049b05215e00d6cbe9fb594bab6a1/Clinvar-annotation.png)
 
 ## **Appendix**
 Table 1: Alignments outputs in 3 reference genomes
